@@ -1,5 +1,6 @@
 package com.example.jetpackcompose
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.animation.OvershootInterpolator
 import android.widget.Toast
@@ -25,6 +26,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.jetpackcompose.activity.RecyclerViewInCompose
 import kotlinx.coroutines.delay
 
 class MainActivity :ComponentActivity() {
@@ -35,7 +37,7 @@ class MainActivity :ComponentActivity() {
             Surface(color = Color.White, modifier = Modifier.fillMaxSize()) {
 
                 Column(horizontalAlignment = Alignment.CenterHorizontally){
-                    Button(onClick = { Toast.makeText(this@MainActivity, "click1", Toast.LENGTH_SHORT).show() }) {
+                    Button(onClick = { startActivity(Intent(this@MainActivity,RecyclerViewInCompose::class.java))}) {
                         Text("Submit Request")
                     }
                     Spacer(modifier = Modifier.height(20.dp))
