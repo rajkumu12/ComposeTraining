@@ -26,6 +26,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.jetpackcompose.activity.FieldSActivity
 import com.example.jetpackcompose.activity.RecyclerViewInCompose
 import kotlinx.coroutines.delay
 
@@ -41,7 +42,7 @@ class MainActivity :ComponentActivity() {
                         Text("Submit Request")
                     }
                     Spacer(modifier = Modifier.height(20.dp))
-                    Button(onClick = { Toast.makeText(this@MainActivity, "click2", Toast.LENGTH_SHORT).show()}) {
+                    Button(onClick = { startActivity(Intent(this@MainActivity,FieldSActivity ::class.java))}) {
                         Text("Submit Request")
                     }
                     Spacer(modifier = Modifier.height(20.dp))
