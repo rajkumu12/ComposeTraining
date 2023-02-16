@@ -3,6 +3,7 @@ package com.example.jetpackcompose.data
 import com.example.jetpackcompose.R
 
 object  Details {
+    //data
     val EmployDetailsList = listOf(
         EmployDetails(
             id = 1,
