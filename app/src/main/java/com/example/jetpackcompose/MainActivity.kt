@@ -30,46 +30,102 @@ import com.example.jetpackcompose.activity.FieldSActivity
 import com.example.jetpackcompose.activity.RecyclerViewInCompose
 import kotlinx.coroutines.delay
 
-class MainActivity :ComponentActivity() {
+class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
 
             Surface(color = Color.White, modifier = Modifier.fillMaxSize()) {
 
-                Column(horizontalAlignment = Alignment.CenterHorizontally){
-                    Button(onClick = { startActivity(Intent(this@MainActivity,RecyclerViewInCompose::class.java))}) {
+                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                    Button(onClick = {
+                        startActivity(
+                            Intent(
+                                this@MainActivity,
+                                RecyclerViewInCompose::class.java
+                            )
+                        )
+                    }) {
                         Text("Submit Request")
                     }
                     Spacer(modifier = Modifier.height(20.dp))
-                    Button(onClick = { startActivity(Intent(this@MainActivity,FieldSActivity ::class.java))}) {
+                    Button(onClick = {
+                        startActivity(
+                            Intent(
+                                this@MainActivity,
+                                FieldSActivity::class.java
+                            )
+                        )
+                    }) {
                         Text("Submit Request")
                     }
                     Spacer(modifier = Modifier.height(20.dp))
-                    Button(onClick = { Toast.makeText(this@MainActivity, "click 3", Toast.LENGTH_SHORT).show()}) {
+                    Button(onClick = {
+                        Toast.makeText(
+                            this@MainActivity,
+                            "click 3",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }) {
                         Text("Submit Request")
                     }
                     Spacer(modifier = Modifier.height(20.dp))
-                    Button(onClick = {Toast.makeText(this@MainActivity, "click 4", Toast.LENGTH_SHORT).show() }) {
+                    Button(onClick = {
+                        Toast.makeText(
+                            this@MainActivity,
+                            "click 4",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }) {
                         Text("Submit Request")
                     }
                     Spacer(modifier = Modifier.height(20.dp))
-                    Button(onClick = { Toast.makeText(this@MainActivity, "click 5", Toast.LENGTH_SHORT).show()}) {
+                    Button(onClick = {
+                        Toast.makeText(
+                            this@MainActivity,
+                            "click 5",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }) {
                         Text("Submit Request")
                     }
                     Spacer(modifier = Modifier.height(20.dp))
+
+                    Row() {
+                        Button(onClick = {
+                            Toast.makeText(
+                                this@MainActivity,
+                                "Row 1",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }) {
+                            Text("Submit Request")
+                        }
+                        Spacer(modifier = Modifier.width(20.dp))
+                        Button(onClick = {
+                            Toast.makeText(
+                                this@MainActivity,
+                                "Row 2",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }) {
+                            Text("Submit Request")
+                        }
+                    }
 
                 }
             }
-
         }
     }
 }
+
 @Composable
 fun Navigation() {
     val navController = rememberNavController()
-    NavHost(navController = navController,
-        startDestination = "splash_screen") {
+    NavHost(
+        navController = navController,
+        startDestination = "splash_screen"
+    ) {
         composable("splash_screen") {
             SplashScreen(navController = navController)
         }
@@ -82,6 +138,7 @@ fun Navigation() {
         }
     }
 }
+
 @Composable
 fun SplashScreen(navController: NavController) {
     val scale = remember {
@@ -97,18 +154,23 @@ fun SplashScreen(navController: NavController) {
                 durationMillis = 800,
                 easing = {
                     OvershootInterpolator(4f).getInterpolation(it)
-                }))
+                })
+        )
         // Customize the delay time
         delay(3000L)
         navController.navigate("main_screen")
     }
 
     // Image
-    Box(contentAlignment = Alignment.Center,
-        modifier = Modifier.fillMaxSize()) {
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier = Modifier.fillMaxSize()
+    ) {
         // Change the logo
-        Image(painter = painterResource(id = R.drawable.logo),
+        Image(
+            painter = painterResource(id = R.drawable.logo),
             contentDescription = "Logo",
-            modifier = Modifier.scale(scale.value))
+            modifier = Modifier.scale(scale.value)
+        )
     }
 }
